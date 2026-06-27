@@ -5,7 +5,8 @@ import img1 from '../assets/logo.png';
 import { ChevronDown, User, LogOut } from 'lucide-react';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:4000/api';
+// const BASE_URL = 'http://localhost:4000/api';
+const BASE_URL = 'https://trackexpense-s5n5.onrender.com/api';
 
 const Navbar = ({ user: popUser, onLogout }) => {
 
