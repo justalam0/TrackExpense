@@ -7,7 +7,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:4000/api';
+// const BASE_URL = 'http://localhost:4000/api';
+const BASE_URL = "https://trackexpense-s5n5.onrender.com/api";
 
 Modal.setAppElement('#root');
 // Move PasswordInput component outside of ProfilePage to prevent recreation on every render
