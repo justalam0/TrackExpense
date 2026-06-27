@@ -99,8 +99,13 @@ const ExpensePage = () => {
 
   // Auth headers helper
   const getAuthHeaders = useCallback(() => {
-    const token = localStorage.getItem("token");
-    return token ? { Authorization: `Bearer ${token}` } : {};
+    const token =
+      localStorage.getItem("token") ||
+      sessionStorage.getItem("token");
+
+    return token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
   }, []);
 
   // Fetch overview (GET /expense/overview?range=...)

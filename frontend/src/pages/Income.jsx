@@ -172,7 +172,7 @@ const Income = () => {
   const {
     transactions: outletTransactions = [],
     timeFrame = "monthly",
-    setTimeFrame = () => {},
+    setTimeFrame = () => { },
     refreshTransactions,
   } = useOutletContext();
 
@@ -204,8 +204,13 @@ const Income = () => {
 
   // to get the token from localstorage
   const getAuthHeaders = useCallback(() => {
-    const token = localStorage.getItem("token");
-    return token ? { Authorization: `Bearer ${token}` } : {};
+    const token =
+      localStorage.getItem("token") ||
+      sessionStorage.getItem("token");
+
+    return token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
   }, []);
 
   const timeFrameRange = useMemo(
@@ -277,7 +282,7 @@ const Income = () => {
           : timeFrame === "yearly"
             ? d.date.getMonth() === transDate.getMonth()
             : d.date.getDate() === transDate.getDate() &&
-              d.date.getMonth() === transDate.getMonth(),
+            d.date.getMonth() === transDate.getMonth(),
       );
       point && (point.income += Math.round(Number(transaction.amount)));
     });
@@ -332,11 +337,11 @@ const Income = () => {
         ? Math.round(overview.averageIncome)
         : filteredTransactions.length
           ? Math.round(
-              filteredTransactions.reduce(
-                (s, t) => s + Math.round(Number(t.amount || 0)),
-                0,
-              ) / filteredTransactions.length,
-            )
+            filteredTransactions.reduce(
+              (s, t) => s + Math.round(Number(t.amount || 0)),
+              0,
+            ) / filteredTransactions.length,
+          )
           : 0,
     [overview.averageIncome, filteredTransactions],
   ); // use backend overview if available
@@ -360,6 +365,10 @@ const Income = () => {
         date: toIsoWithClientTime(newTransaction.date),
       };
 
+      console.log("Token:", localStorage.getItem("token"));
+      console.log("Session Token:", sessionStorage.getItem("token"));
+      console.log(getAuthHeaders());
+      
       await axios.post(`${API_BASE}/income/add`, payload, {
         headers: { "Content-Type": "application/json", ...getAuthHeaders() },
       });
