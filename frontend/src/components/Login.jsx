@@ -4,7 +4,7 @@ import { User, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-export const Login = ({ onLogin, API_URL = 'http://localhost:4000' }) => {
+export const Login = ({ onLogin, API_URL = 'https://trackexpense-s5n5.onrender.com' }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

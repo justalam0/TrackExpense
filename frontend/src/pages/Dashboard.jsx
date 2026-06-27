@@ -49,7 +49,7 @@ import {
 
 import AddTransactionModal from "../components/Add";
 
-const API_BASE = 'http://localhost:4000/api';
+const API_BASE = 'https://trackexpense-s5n5.onrender.com/api';
 
 const getAuthHeader = () => {
 

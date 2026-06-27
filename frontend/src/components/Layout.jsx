@@ -28,7 +28,7 @@ import {
     Zap
 } from 'lucide-react';
 
-const API_BASE = 'http://localhost:4000/api';
+const API_BASE = 'https://trackexpense-s5n5.onrender.com/api';
 
 const CATEGORY_ICONS = {
     Food: <Utensils className="w-4 h-4" />,
